@@ -8,8 +8,25 @@ location() {
     dirname "$(readlink --canonicalize "$1")"
 }
 
+####################################################################################################################################
 # Determine the actual location of the profile configuration script
 SCRIPT_LOCATION=$(location "$HOME/.bash_profile")
+
+####################################################################################################################################
+# Store original versions of environment variables
+export ORIGINAL_PATh=$PATH
+
+####################################################################################################################################
+# Include user private executable directories
+if [[ -d "$HOME/bin" ]]
+then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [[ -d "$HOME/.local/bin" ]]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
 ####################################################################################################################################
 # Ensure only interactive session profile configuration is applied to interactive sessions by exiting profile configuration for
