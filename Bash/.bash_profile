@@ -3,3 +3,43 @@
 # Copyright (C) 2018 Jacques Buitendag (jacques dot buitendag at gmail dot com)
 #
 ####################################################################################################################################
+# Define helper function to determine the directory name of a a script
+location() {
+    dirname "$(readlink --canonicalize "$1")"
+}
+
+# Determine the actual location of the profile configuration script
+SCRIPT_LOCATION=$(location "$HOME/.bash_profile")
+
+# Ensure only interactive session profile configuration is applied to interactive sessions by exiting profile configuration for
+# non-interactive session
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Apply any defined command line aliases
+if [[ -f "$HOME/.bash_aliases" ]]
+then
+    source "$HOME/.bash_aliases"
+else
+    if [[ -f "$SCRIPT_LOCATION/.bash_aliases" ]]
+    then
+        source "$SCRIPT_LOCATION/.bash_aliases"
+    fi
+fi
+
+# Define preferred behaviour for changing of directories
+cd() {
+    builtin cd "$@" && ls
+}
+
+# Define preferred behavior for clearing of active console window
+clear() {
+    tput reset
+}
+
+
+
+
+
