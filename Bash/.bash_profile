@@ -11,6 +11,7 @@ location() {
 # Determine the actual location of the profile configuration script
 SCRIPT_LOCATION=$(location "$HOME/.bash_profile")
 
+####################################################################################################################################
 # Ensure only interactive session profile configuration is applied to interactive sessions by exiting profile configuration for
 # non-interactive session
 case $- in
@@ -18,7 +19,8 @@ case $- in
       *) return;;
 esac
 
-# Apply any defined command line aliases
+####################################################################################################################################
+# Apply defined command line aliases
 if [[ -f "$HOME/.bash_aliases" ]]
 then
     source "$HOME/.bash_aliases"
@@ -29,6 +31,24 @@ else
     fi
 fi
 
+####################################################################################################################################
+# Apply defined directory listing colour scheme
+if [[ -f "$HOME/.dircolors" ]]
+then
+    DIR_COLOR_SOURCE="$HOME/.dircolors"
+else
+    if [[ -f "$SCRIPT_LOCATION/.dircolors" ]]
+    then
+        DIR_COLOR_SOURCE="$SCRIPT_LOCATION/.dircolors"
+    fi
+fi
+
+if [[ -n ${DIR_COLOR_SOURCE} ]]
+then
+    eval $(dircolors  --bourne-shell "$DIR_COLOR_SOURCE")
+fi
+
+####################################################################################################################################
 # Define preferred behaviour for changing of directories
 cd() {
     builtin cd "$@" && ls
@@ -38,8 +58,3 @@ cd() {
 clear() {
     tput reset
 }
-
-
-
-
-

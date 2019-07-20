@@ -1,0 +1,179 @@
+####################################################################################################################################
+#
+# Copyright (C) 2018 Jacques Buitendag (jacques dot buitendag at gmail dot com)
+#
+####################################################################################################################################
+# Configuration file for use with the dircolors command line utility, derived from the standard builtin database
+
+####################################################################################################################################
+# Colour Attribute codes
+# None              00
+# Bold              01
+# Underscore        04
+# Blink             05
+# Reverse           07
+# Concealed         08
+
+####################################################################################################################################
+# Text color codes
+# Black         30
+# Red           31
+# Green         32
+# Yellow        33
+# Blue          34
+# Magenta       35
+# Cyan          36
+# White         37
+
+####################################################################################################################################
+# Background colour codes
+# Black         40
+# Red           41
+# Green         42
+# Yellow        43
+# Blue          44
+# Magenta       45
+# Cyan          46
+# White         47
+
+####################################################################################################################################
+NORMAL                      00
+RESET                       00
+FILE                        00
+DIR                         01;34
+LINK                        36
+ORPHAN                      01;36
+MISSING                     00
+MULTIHARDLINK               00
+
+FIFO                        40;33
+SOCK                        01;35
+DOOR                        01;35
+BLK                         40;33;01
+CHR                         40;33;01
+
+EXEC                        33
+SETUID                      01;33
+SETGID                      01;33
+CAPABILITY                  30;41
+STICKY_OTHER_WRITABLE       30;42
+OTHER_WRITABLE              34;42
+STICKY                      37;44
+
+####################################################################################################################################
+# Archive files
+.tar        31
+.tgz        31
+.arc        31
+.arj        31
+.taz        31
+.lha        31
+.lz4        31
+.lzh        31
+.lzma       31
+.tlz        31
+.txz        31
+.tzo        31
+.t7z        31
+.zip        31
+.z          31
+.Z          31
+.dz         31
+.gz         31
+.lrz        31
+.lz         31
+.lzo        31
+.xz         31
+.zst        31
+.tzst       31
+.bz2        31
+.bz         31
+.tbz        31
+.tbz2       31
+.tz         31
+.deb        31
+.rpm        31
+.jar        31
+.war        31
+.ear        31
+.sar        31
+.rar        31
+.alz        31
+.ace        31
+.zoo        31
+.cpio       31
+.7z         31
+.rz         31
+.cab        31
+.wim        31
+.swm        31
+.dwm        31
+.esd        31
+
+####################################################################################################################################
+# Media files
+.jpg        35
+.jpeg       35
+.mjpg       35
+.mjpeg      35
+.gif        35
+.bmp        35
+.pbm        35
+.pgm        35
+.ppm        35
+.tga        35
+.xbm        35
+.xpm        35
+.tif        35
+.tiff       35
+.png        35
+.svg        35
+.svgz       35
+.mng		35
+.pcx		35
+.mov		35
+.mpg		35
+.mpeg		35
+.m2v		35
+.mkv		35
+.webm		35
+.ogm		35
+.mp4		35
+.m4v		35
+.mp4v		35
+.vob		35
+.qt		    35
+.nuv		35
+.wmv		35
+.asf		35
+.rm		    35
+.rmvb		35
+.flc		35
+.avi		35
+.fli		35
+.flv		35
+.gl		    35
+.dl		    35
+.xcf		35
+.xwd		35
+.yuv		35
+.cgm		35
+.emf		35
+.ogv		35
+.ogx		35
+.aac		35
+.au		    35
+.flac		35
+.m4a		35
+.mid		35
+.midi		35
+.mka		35
+.mp3		35
+.mpc		35
+.ogg		35
+.ra		    35
+.wav		35
+.oga		35
+.opus		35
+.spx		35
+.xspf		35
