@@ -1,10 +1,10 @@
 ####################################################################################################################################
 ####################################################################################################################################
-# Include functions for the inclusion of GIT repository details in the session command prompt
+# Include functions for the generation of GIT repository details
 source "${SCRIPT_LOCATION}/../PoshGit/git-prompt.sh"
 
 ####################################################################################################################################
-# Define dynamic prompt construction callback function
+# Define dynamic session command prompt construction function
 dynamic_prompt () {
     local consolecolumncount=$(tput cols)
 
@@ -14,11 +14,12 @@ dynamic_prompt () {
     local cursorprompt=">"
 
     local defaultinformation="\[\033[01;34;1m\]\w/\[\033[m\]"
+    local gitinformation="$(__posh_git_echo)"
 
     local topborderlength=$((${consolecolumncount} - 1))
     local topborder=$(printf "%0.s$topbordercharacter" $(seq 1 ${topborderlength}))
 
-    local leftinformation=$(printf "%s" "$defaultinformation")
+    local leftinformation=$(printf "%s %s" "${defaultinformation}" "${gitinformation}")
     local rightinformation=$(printf "")
 
     local justificationcolumncount=$((${consolecolumncount} - ${#rightinformation}))
@@ -30,4 +31,3 @@ dynamic_prompt () {
                  "$leftborder" "$leftinformation"\
                  "$leftborder" "$cursorprompt")
 }
-
