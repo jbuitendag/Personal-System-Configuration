@@ -31,3 +31,24 @@ dynamic_prompt () {
                  "$leftborder" "$leftinformation"\
                  "$leftborder" "$cursorprompt")
 }
+
+####################################################################################################################################
+# Define function to share specified content with other users via the 'shared' group
+share () {
+    # Ensure that the target group exists
+    if [[ ! $(getent group "share") ]]
+    then
+        groupadd "share"
+    fi
+
+    if [[ $# -eq 0 ]]
+    then
+        chmod --recursive g=u .*
+        chmod --recursive g=u *
+        chgrp --recursive "share" .*
+        chgrp --recursive "share" *
+    else
+        chmod --recursive g=u "${1}"
+        chgrp --recursive "share" "${1}"
+    fi
+}
