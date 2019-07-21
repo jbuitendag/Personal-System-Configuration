@@ -11,7 +11,7 @@ SCRIPT_LOCATION=$(location "$HOME/.bash_profile")
 
 ####################################################################################################################################
 # Store original versions of environment variables
-export ORIGINAL_PATh=$PATH
+ORIGINAL_PATH=$PATH
 
 ####################################################################################################################################
 # Include user private executable directories
@@ -26,12 +26,29 @@ then
 fi
 
 ####################################################################################################################################
+# Ensure that required environment variables are available to sub-processes
+export PATH
+
+####################################################################################################################################
 # Ensure only interactive session profile configuration is applied to interactive sessions by exiting profile configuration for
 # non-interactive session
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+####################################################################################################################################
+# Define the preferred behavior of the session
+HISTCONTROL=ignorebotacutalh:erasedups
+HISTSIZE=2048
+HISTFILESIZE=2048
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s globstar
+shopt -s cdspell
+shopt -s dotglob
+shopt -s expand_aliases
 
 ####################################################################################################################################
 # Apply defined command line aliases
