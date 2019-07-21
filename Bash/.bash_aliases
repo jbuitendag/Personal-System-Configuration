@@ -1,7 +1,4 @@
 ####################################################################################################################################
-#
-# Copyright (C) 2018 Jacques Buitendag (jacques dot buitendag at gmail dot com)
-#
 ####################################################################################################################################
 # Aliases for directory listing commands
 alias ls="ls --color=auto --classify --indicator-style=slash --hide-control-chars --human-readable -l"
